@@ -1,0 +1,2 @@
+Second smallest element = 12
+Largest element = 20
