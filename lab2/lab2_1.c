@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Recursive function to fill binary representation
-void toBinary(int num, char *binary, int index) {
+void toBinary(int num, char *binary, int index) 
+{
     if (index < 0)
         return;
 
@@ -10,13 +10,14 @@ void toBinary(int num, char *binary, int index) {
     toBinary(num / 2, binary, index - 1);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) 
+{
     if (argc != 4) {
         printf("Usage: %s <n> <input_file> <output_file>\n", argv[0]);
         return 1;
     }
 
-    int n = atoi(argv[1]);  // Convert string to integer
+    int n = atoi(argv[1]);  
     FILE *infile = fopen(argv[2], "r");
     FILE *outfile = fopen(argv[3], "w");
 
@@ -30,9 +31,9 @@ int main(int argc, char *argv[]) {
         if (fscanf(infile, "%d", &number) != 1) break;
 
         char binary[17];
-        binary[16] = '\0';  // Null-terminate string
+        binary[16] = '\0';  
 
-        toBinary(number, binary, 15);  // Fill 16-bit binary string
+        toBinary(number, binary, 15);  
 
         fprintf(outfile, "The binary equivalent of %d is %s\n", number, binary);
     }
