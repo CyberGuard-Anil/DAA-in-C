@@ -1,0 +1,10 @@
+Pairs with sum 70 using O(n log n) approach:
+10 60
+20 50
+30 40
+
+Pairs with sum 70 using O(n) approach:
+40 30
+50 20
+60 10
+
