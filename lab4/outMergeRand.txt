@@ -1,0 +1,6 @@
+Before Sorting:
+55 63 33 11 44 
+After Sorting:
+11 33 44 55 63 
+Number of Comparisons: 6
+Execution Time: 2011 nanoseconds

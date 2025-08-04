@@ -1,0 +1,6 @@
+Before Sorting:
+10 20 30 40 
+After Sorting:
+10 20 30 40 
+Number of Comparisons: 4
+Execution Time: 731 nanoseconds
