@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SIZE 400  
-
 void generateRandom(int arr[], int n) 
 {
     for (int i = 0; i < n; i++)
@@ -29,20 +27,41 @@ int compareDesc(const void *a, const void *b)
     return (*(int*)b - *(int*)a);
 }
 
-int main() {
-    int arr[SIZE];
+int main() 
+{
+    int size;
+    printf("Enter number of elements to generate (recommended: 300–500): ");
+    scanf("%d", &size);
+
+    if (size <= 0 || size > 10000) 
+    {
+        printf("Invalid size. Please enter a positive number under 10,000.\n");
+        return 1;
+    }
+
+    int *arr = (int*)malloc(size * sizeof(int));
+    if (arr == NULL) 
+    {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
     srand(time(0));  
+    generateRandom(arr, size);
+    writeToFile("inRand.txt", arr, size);
 
-    generateRandom(arr, SIZE);
-    writeToFile("inRand.txt", arr, SIZE);
+    qsort(arr, size, sizeof(int), compareAsc);
+    writeToFile("inAsce.txt", arr, size);
 
-    qsort(arr, SIZE, sizeof(int), compareAsc);
-    writeToFile("inAsce.txt", arr, SIZE);
+    qsort(arr, size, sizeof(int), compareDesc);
+    writeToFile("inDesc.txt", arr, size);
 
-    qsort(arr, SIZE, sizeof(int), compareDesc);
-    writeToFile("inDesc.txt", arr, SIZE);
+    printf("Files generated:\n");
+    printf("• inRand.txt (random)\n");
+    printf("• inAsce.txt (sorted ascending)\n");
+    printf("• inDesc.txt (sorted descending)\n");
 
-    printf("Files generated: inRand.txt, inAsce.txt, inDesc.txt with %d elements\n", SIZE);
+    free(arr);
     return 0;
 }
 
