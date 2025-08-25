@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-long comparisons = 0; // global comparison counter
+long comparisons = 0; 
 
-// Quick Sort Function
 void quickSort(int arr[], int low, int high) {
     if (low < high) {
         int pivot = arr[high];
@@ -27,22 +26,19 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
-// Generate ascending array
 void generateAscending(int arr[], int n) {
     for (int i = 0; i < n; i++) arr[i] = i + 1;
 }
 
-// Generate descending array
+
 void generateDescending(int arr[], int n) {
     for (int i = 0; i < n; i++) arr[i] = n - i;
 }
 
-// Generate random array
 void generateRandom(int arr[], int n) {
     for (int i = 0; i < n; i++) arr[i] = rand() % 100000;
 }
 
-// Display first few elements (for brevity)
 void displaySample(int arr[], int n) {
     int limit = n < 20 ? n : 20;
     for (int i = 0; i < limit; i++) printf("%d ", arr[i]);
@@ -85,28 +81,23 @@ int main() {
             return 0;
         }
 
-        // Display before sorting
         printf("%-10d ", n);
         displaySample(arr, n);
 
-        // Sorting
         comparisons = 0;
         clock_t start = clock();
         quickSort(arr, 0, n - 1);
         clock_t end = clock();
         double timeTaken = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-        // Display after sorting
         printf("%-10s ", "");
         displaySample(arr, n);
 
-        // Summary row
         printf("%-10s %-15s %-15s %-20f %-15ld\n", "", "", "", timeTaken, comparisons);
 
         free(arr);
     }
 
-    // Print scenario
     if (option == 1) printf("\nScenario: Best-case\n");
     else if (option == 2) printf("\nScenario: Worst-case\n");
     else printf("\nScenario: Average-case\n");

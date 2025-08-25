@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 void quickSort(int arr[], int low, int high) 
 {
     if (low < high) 

@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-long comparisons = 0; // For counting comparisons
+long comparisons = 0; 
 
-// Quick Sort
 void quickSort(int arr[], int low, int high) {
     if (low < high) {
         int pivot = arr[high];
@@ -28,7 +27,6 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
-// Function to read file into array
 int readFile(char *filename, int arr[]) {
     FILE *fp = fopen(filename, "r");
     if (!fp) {
@@ -43,7 +41,6 @@ int readFile(char *filename, int arr[]) {
     return n;
 }
 
-// Function to write array to file
 void writeFile(char *filename, int arr[], int n) {
     FILE *fp = fopen(filename, "w");
     for (int i = 0; i < n; i++) {
@@ -52,7 +49,6 @@ void writeFile(char *filename, int arr[], int n) {
     fclose(fp);
 }
 
-// Display array
 void displayArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
@@ -92,27 +88,23 @@ int main() {
         return 0;
     }
 
-    // Read input file
     n = readFile(inputFile, arr);
     if (n == 0) return 0;
 
     printf("Before Sorting: ");
     displayArray(arr, n);
 
-    // Sort
     comparisons = 0;
     quickSort(arr, 0, n - 1);
 
     printf("After Sorting: ");
     displayArray(arr, n);
 
-    // Save to output file
     sprintf(outputFile, "output.txt");
     writeFile(outputFile, arr, n);
 
     printf("Number of Comparisons: %ld\n", comparisons);
 
-    // Identify Scenario
     if (option == 1)
         printf("Scenario: Best-case\n");
     else if (option == 2)
